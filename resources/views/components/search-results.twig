@@ -1,0 +1,35 @@
+{% if search_results.found_posts > 0 %}
+<div class="flex justify-between">
+	<p class="text-xl">
+		Total Results Found:
+		{{ search_results.found_posts }}
+	</p>
+</div>
+{% else %}
+    <p class="text-3xl">
+        No results found
+    </p>
+{% endif %}
+
+{% for result in search_results %}
+	<div class="py-4 prose-h3:mb-0 prose-h3:leading-none prose-p:mt-2 after:content-[''] after:block after:w-full after:h-[2px]">
+		<a href="{{ result.link }}">
+			<h3>
+				{{ result.title }}
+			</h3>
+		</a>
+		<p>
+			{{ result.excerpt }}
+		</p>
+	</div>
+{% endfor %}
+{% if search_results.found_posts > 5 %}
+	{% set total_pages = (search_results.found_posts / 5)|ceil %}
+	<menu>
+		{% for search_page in 1..total_pages %}
+			<a class="px-2 font-bold {{ current_page == search_page ? 'bg-gray-700 text-white' : '' }}" href="?s={{ search_query }}&page={{ search_page }}">
+				{{ search_page }}
+			</a>
+		{% endfor %}
+	</menu>
+{% endif %}

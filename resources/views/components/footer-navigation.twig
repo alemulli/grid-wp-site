@@ -1,0 +1,7 @@
+<menu class="flex gap-4">
+    {% for item in footer_menu_items %}
+    <li>
+        <a href="{{ item.url }}" class="{{ item.class }}" title="{{item.name}}" aria-label="{{item.name}}">{{ item.name }}</a>
+    </li>
+    {% endfor %}
+</menu>

@@ -1,0 +1,18 @@
+<div class="flex justify-center gap-5 p-0 py-4 mx-auto lg:justify-start">
+    {% set socials = [ {'name': 'facebook', 'svg': 'facebook.svg.twig', 'class':
+    'fill-white'}, {'name': 'instagram', 'svg': 'instagram.svg.twig', 'class':
+    'fill-white'}, {'name': 'youtube', 'svg': 'youtube.svg.twig', 'class':
+    'fill-white'}, {'name': 'linkedin', 'svg': 'linkedin.svg.twig', 'class':
+    'fill-white'}, {'name': 'x', 'svg': 'x-twitter.svg.twig', 'class':
+    'fill-white'} ] %} {% for social in socials %} {% if options[social.name] %}
+    <a
+        class="flex items-center group"
+        href="{{ options[social.name] }}"
+        target="_blank"
+        aria-label="(opens in a new window)">
+        {% include "svg/" ~ social.svg with { 'class': social.class ~ ' w-10
+        transition-transform group-hover:scale-110' } %}
+        <span class="sr-only">{{social.name}}</span>
+    </a>
+    {% endif %} {% endfor %}
+</div>

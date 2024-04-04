@@ -1,0 +1,16 @@
+@import 'wordpress/block-library.css';
+@import 'wordpress/global-styles.css';
+@import './fonts.css';
+
+@import './tailwind/base.css';
+
+@import './tailwind/components.css';
+
+@import './tailwind/utilities.css';
+
+[x-cloak] {
+    display: none !important;
+}
+h1 {
+    @apply text-4xl font-extrabold;
+}

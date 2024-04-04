@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		{% include "partials/gtm.twig" %}
+		<meta charset="{{ site.charset }}"/>
+		<meta name="description" content="{{ site.description }}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="pingback" href="{{ site.pingback_url }}"/>
+		<link rel="manifest" href="{{theme.path}}/manifest.json"/>
+		
+		{{ function('wp_head') }}
+		{% include "partials/fonts.twig" %}
+	</head>
+	<body  hx-ext="head-support" {{boost_links_if_not_admin()}} id="originsapp" class="{{body_class}}" data-template="base.twig">
+		{% include "partials/gtm-noscript.twig" %}
+		<a hx-post="/clicked" class=" skip-link screen-reader-text" href="#content">
+			{{ _e( 'Skip to content') }}
+		</a>
+		<header x-data="{navIsOpen: false}">
+			{% block header %}
+				{% include ('layouts/header.twig') %}
+			{% endblock %}
+		</header>
+		<main>
+			{% block content %}
+				Sorry, no content
+			{% endblock %}
+		</main>
+		<footer class="text-white bg-black has-global-padding">
+			{% block footer %}
+				{% include 'layouts/footer.twig' %}
+			{% endblock
+            %}
+		</footer>
+		<pre>
+			{{ dump() }}
+		</pre>
+		{{ function('wp_footer') }}
+	</body>
+</html>

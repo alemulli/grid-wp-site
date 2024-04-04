@@ -1,0 +1,16 @@
+{
+	"name": "Origins",
+	"short_name": "Origins",
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#FFFFFF",
+	"version": "1.0",
+	"icons": [
+		{
+			"src": "/wp-content/themes/origins/icon.png",
+			"sizes": "144x144",
+			"type": "image/png"
+		}
+	]
+}

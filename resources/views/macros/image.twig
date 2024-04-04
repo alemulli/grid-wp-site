@@ -1,0 +1,19 @@
+{% macro responsive_image(src, alt, classes, sizes, ) %}
+<picture class="my-0">
+    {% for size, media_query in sizes %} {% set dimensions = size|split('x') %}
+    {% if dimensions|length == 2 %}
+    <source
+        srcset="{{ src|towebp|resize(dimensions[0], dimensions[1]) }}"
+        media="{{ media_query }}" />
+    {% else %}
+    <source
+        srcset="{{ src|towebp|resize(dimensions[0]) }}"
+        media="{{ media_query }}" />
+    {% endif %} {% endfor %}
+    <img
+        class="{{classes}}"
+        loading="lazy"
+        src="{{ src|towebp }}"
+        alt="{{ alt }}" />
+</picture>
+{% endmacro %}

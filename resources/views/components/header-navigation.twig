@@ -1,0 +1,44 @@
+{% macro render_submenu_indicator(submenuIsOpen) %}
+<div
+    x-on:click="submenuIsOpen = !submenuIsOpen"
+    class="relative self-center w-4 h-4 cursor-pointer lg:hidden">
+    <div
+        :class="submenuIsOpen && 'rotate-90'"
+        class="absolute transition-transform w-[2px] h-4 rounded-full bg-white left-0 right-0 mx-auto group-hover:bg-yellow"></div>
+    <div
+        :class="submenuIsOpen && '-rotate-90'"
+        class="absolute transition-transform w-[2px] h-4 rounded-full bg-white rotate-90 left-0 right-0 mx-auto group-hover:bg-yellow"></div>
+</div>
+{% endmacro %} {% macro render_default_indicator() %}
+<div class="relative self-center w-4 h-4 cursor-pointer lg:hidden">
+    <div
+        class="absolute transition-transform w-[2px] h-4 rounded-full bg-white rotate-90 left-0 right-0 mx-auto group-hover:bg-yellow"></div>
+</div>
+{% endmacro %} {% macro render_menu_items(menu_items, depth) %} {% set
+text_size_map = {1: 'text-2xl', 2: 'text-xl', 3: 'text-lg'} %} {% for item in
+menu_items %}
+
+<li
+    class="flex flex-col items-center list-none"
+    x-data="{submenuIsOpen: false}">
+    <div class="flex w-full">
+        {# Menu Indicator #} {% if item.children %} {{
+        _self.render_submenu_indicator(submenuIsOpen) }} {% else %} {{
+        _self.render_default_indicator() }} {% endif %} {# Menu Item #}
+        <a
+            href="{{ item.url }}"
+            class="{{ item.class }} {{ item.current ? 'text-green-300' }} list-none leading-8 px-4 {{text_size_map[depth]}}"
+            title="{{item.name}}" aria-label="{{item.name}}">{{ item.name }}</a
+        >
+    </div>
+
+    {% if item.children %}
+    <menu
+        :class="{'hidden' : ! submenuIsOpen }"
+        class="flex flex-col items-start justify-start hidden w-full pl-8 mt-2">
+        {{ _self.render_menu_items(item.children, depth + 1) }}
+    </menu>
+    {% endif %}
+</li>
+
+{% endfor %} {% endmacro %}

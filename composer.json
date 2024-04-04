@@ -1,0 +1,29 @@
+{
+    "name": "jacobprice/origins",
+    "autoload": {
+        "psr-4": {
+            "Origins\\": "app/",
+            "Origins\\Blocks\\": "blocks/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jacobprice",
+            "email": "j@cobprice.com"
+        }
+    ],
+    "require": {
+        "leadpoint-digital/og-core": "v2.x-dev"
+    },
+    "repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/leadpoint-digital/og-core"
+		}
+    ],
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

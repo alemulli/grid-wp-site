@@ -1,0 +1,43 @@
+{% import "components/header-navigation.twig" as menu %}
+
+<div class="relative flex items-center justify-between p-4 bg-black">
+    {# Logo #}
+    <a href="/" class="flex-shrink-0">
+        <div class="relative z-0 flex items-center">
+            <img
+                src="{{theme.path}}/iconlg.png"
+                alt="Logo"
+                class="z-10 flex-shrink-0 w-20 h-20" />
+            <div
+                class="absolute z-20 w-20 h-20 rounded-full shadow-[0_5px_6px_-1px_rgba(255,255,255,1)] animate-spin-slow"></div>
+            {#
+            <div
+                class="flex items-center bg-black border-2 border-white rounded-full shadow-sm w-14 h-14 shadow-white"></div>
+            #}
+            <p class="pl-[2px] text-3xl text-white">rigins</p>
+        </div>
+    </a>
+
+    {# Navigation #}
+    <nav>
+        {# Hamburger Menu #}
+        <div
+            @click="navIsOpen = !navIsOpen"
+            class="relative flex flex-col w-8 h-4 gap-1 lg:hidden">
+            <div
+                :class="{'rotate-45 top-1/2  translate-y-1/4' : navIsOpen}"
+                class="absolute top-0 w-full h-1 transition-all bg-white"></div>
+            <div
+                :class="{'hidden' : navIsOpen}"
+                class="absolute w-full h-1 bg-white top-1/2"></div>
+            <div
+                :class="navIsOpen ? '-rotate-45 top-1/2 translate-y-1/4' : 'top-full' "
+                class="absolute w-full h-1 transition-all bg-white"></div>
+        </div>
+        <menu
+            :class="{'hidden' : ! navIsOpen}"
+            class="left-0 hidden w-full text-white bg-black lg:flex max-lg:pb-4 max-lg:flex-col max-lg:absolute has-global-padding lg:justify-end lg:items-center top-full lg:space-x-4">
+            {{ menu.render_menu_items(menus.header.items, 1) }}
+        </menu>
+    </nav>
+</div>

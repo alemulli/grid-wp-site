@@ -1,0 +1,96 @@
+@import "wordpress/block-library.css";
+@import "wordpress/global-styles.css";
+@import "./fonts.css";
+
+@import "./tailwind/base.css";
+
+@import "./tailwind/components.css";
+
+@import "./tailwind/utilities.css";
+
+/* Editor Resets */
+
+
+a:where(:not(.wp-element-button)) {
+	text-decoration: inherit;
+}
+
+/* hack to make full width blocks also show as full width in the editor */
+/* .block-editor-block-list__layout.is-root-container {
+    .wp-block-acf-example {
+        @apply max-w-none !-ml-[var(--wp--style--root--padding-left)] !-mr-[var(--wp--style--root--padding-right)];
+    }
+} */
+
+.editor-styles-wrapper {
+    font-family: 'Roboto', sans-serif;
+    @apply prose md:prose-2xl lg:prose-2xl xl:prose-2xl 2xl:prose-2xl;
+}
+.editor-post-title {
+	@apply text-3xl font-extrabold;
+}
+/* ----------------------------- Tooltip Styles ----------------------------- */
+.edit-wrapper {
+	position: absolute;
+	right: 5%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	max-width: 30px;
+	max-height: 30px;
+	overflow: visible;
+}
+
+.edit-link {
+	border: 1px solid #707070;
+	border-radius: 5px;
+	background-color: white;
+	width: fit-content;
+	cursor: pointer;
+	box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.75);
+	transition: all 0.2s ease-in-out;
+	margin-bottom: 2px;
+	margin-top: 0px;
+}
+
+.edit-link:hover {
+	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
+	margin-top: 2px;
+	margin-bottom: 0px;
+}
+
+.edit-tooltip {
+	position: relative;
+	pointer-events: none;
+	text-align: center;
+	font-size: 16px;
+	background-color: #444444;
+	color: white;
+	width: 1000%;
+	padding: 3px;
+	border-radius: 5px;
+	margin-top: 12px;
+}
+
+.edit-wrapper .edit-tooltip {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.edit-wrapper:hover .edit-tooltip {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s, opacity 0.2s ease-in-out;
+}
+
+.edit-tooltip:after {
+	content: "";
+	width: 13px;
+	height: 10px;
+	position: absolute;
+	top: -10px;
+	right: 7px;
+	background-color: #444444;
+	clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}

@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="py-12 prose has-global-padding page-content">
+		<h2>
+			Search
+			{{site.name}}
+		</h2>
+		<div
+			x-data="{search: '{{search_query}}'}"
+			x-init="$watch('search', (value) => {
+				if(value.trim() !== '') {
+					const url = new URL(window.location);
+					url.searchParams.set('s', value);
+					url.searchParams.delete('page');
+					window.history.replaceState({}, '', url);
+				}
+		})">
+			<form class="flex">
+				<input
+				type="search"
+				placeholder="Begin your search here..."
+				hx-get="/wp-htmx/search"
+				hx-trigger="input changed delay:300ms, search"
+				hx-target="#search-results"
+				hx-swap="innerHTML"
+				x-bind:hx-vals="JSON.stringify({s: search})"
+				x-model="search"
+				class="focus:outline-none focus-visible:outline-none text-xl max-w-[500px] h-10 w-full bg-[#eaeaea] border-2 border-gray-700 p-2">
+			</form>
+			<section id="search-results">
+				{% include "components/search-results.twig" with {search_results: search_results} %}
+			</section>
+		</div>
+	</div>
+
+{% endblock %}

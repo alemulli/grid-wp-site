@@ -1,0 +1,20 @@
+@import 'tailwindcss/base';
+/* The base layer is for things like reset rules or default styles applied to plain HTML elements. */
+
+@layer base {
+    /* h1 {} */
+    :root {
+        --og--global-padding: 1.5rem;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+
+        @apply bg-white;
+    }
+
+    /* Set the base font-size (size of <p> tags) at different breakpoints. All font sizes and other properties based off rem in tailwindCSS scale up with rem through tailwind typography. Default is text-base. */
+    html {
+        @apply text-base;
+    }
+}

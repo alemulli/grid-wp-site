@@ -1,0 +1,15 @@
+@import 'tailwindcss/utilities';
+
+/**
+ * Add your own utility classes to this theme. Complex utility classes should
+ * be added using Tailwind’s plugin system:
+ * https://tailwindcss.com/docs/plugins#adding-utilities
+ * The utilities layer is for small, single-purpose classes
+ * that should always take precedence over any other styles.
+*/
+
+/*
+@layer utilities {
+
+}
+*/

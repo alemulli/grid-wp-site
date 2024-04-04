@@ -1,0 +1,82 @@
+@import 'tailwindcss/components';
+
+@tailwind components;
+/* The components layer is for class-based styles that you want to be able to override with utilities.
+* The components layer is also a good place to put custom styles for any third-party components you’re using:
+*/
+@layer components {
+    /** Default Styling System For Content
+	 * Modify the theme.json file to change these defaults
+	 */
+    .page-content > * {
+        @apply mx-auto max-w-content;
+    }
+
+    .page-content > .alignwide {
+        @apply max-w-wide;
+    }
+
+    .page-content > .alignfull {
+        @apply max-w-none;
+    }
+
+    .page-content > .alignleft {
+        @apply float-left mr-8;
+    }
+
+    .page-content > .alignright {
+        @apply float-right ml-8;
+    }
+
+    /**
+     * Post title styles
+     *
+     * These will be applied to all headings with a `page-title` or `entry-title`
+     * class on the frontend and to the post title in the block editor.
+     *
+     * The supplied styles are meant to match the default `h1` classes from
+     * Tailwind Typography.
+     */
+    /* .page-title,
+    .entry-title {
+        @apply mx-auto mb-6 text-3xl font-extrabold max-w-content text-neutral-900;
+    } */
+    .entry-title {
+        font-family: 'Roboto', sans-serif;
+        @apply mx-auto mb-6 text-6xl font-extrabold max-w-content;
+    }
+
+    /* Button Styles */
+    .wp-block-button.is-style-btn-1 .wp-block-button__link {
+        @apply font-normal border-white hover:border-secondary border-solid border-[1px] transition rounded-[10px] py-1 px-8 !text-lg text-white hover:text-black no-underline bg-secondary duration-200 hover:bg-white flex;
+    }
+    .wp-block-button.is-style-btn-2 .wp-block-button__link {
+        @apply font-normal border-black hover:border-white border-solid border-[1px] transition rounded-[10px] py-1 px-8 !text-lg text-black hover:text-white hover:bg-black no-underline bg-white duration-200 flex;
+    }
+    .wp-block-button.is-style-btn-3 .wp-block-button__link {
+        @apply font-normal border-white hover:border-accent border-solid border-[1px] transition rounded-[10px] py-1 px-8 !text-lg text-black hover:text-black no-underline bg-accent duration-200 hover:bg-white flex;
+    }
+    .wp-block-button.is-style-btn-4 .wp-block-button__link {
+        @apply font-normal border-white hover:border-tertiary border-solid border-[1px] transition rounded-[10px] py-1 px-8 !text-lg text-white hover:text-black no-underline bg-tertiary duration-200 hover:bg-white flex;
+    }
+
+    /* WP typography fonts responsiveness */
+
+    @media (max-width: 1024px) {
+        .has-extra-extra-large-font-size {
+            @apply !text-[2.5rem];
+        }
+
+        .has-extra-large-font-size {
+            @apply !text-[1.75rem];
+        }
+
+        .has-large-font-size {
+            @apply !text-[1.357rem];
+        }
+
+        .has-medium-font-size {
+            @apply !text-[1.25rem];
+        }
+    }
+}
