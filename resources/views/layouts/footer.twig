@@ -1,6 +1,8 @@
+<div class="text-white bg-black has-global-padding">
 <nav class="pt-4 pb-2 text-xl">
     {% include '/components/footer-navigation.twig' with { 'footer_menu_items':
     footer_menu.items } %}
 </nav>
 {{ include('/partials/socials.twig') }}
 <p>Copyright {{ "now"|date('Y') }}</p>
+</div>

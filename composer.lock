@@ -464,12 +464,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:LeadPoint-Digital/og-core.git",
-                "reference": "360232efffb12da24f653167a88b7d69f2d27494"
+                "reference": "8adb768402c24eac095e00d1120eda7bfc7303a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeadPoint-Digital/og-core/zipball/360232efffb12da24f653167a88b7d69f2d27494",
-                "reference": "360232efffb12da24f653167a88b7d69f2d27494",
+                "url": "https://api.github.com/repos/LeadPoint-Digital/og-core/zipball/8adb768402c24eac095e00d1120eda7bfc7303a7",
+                "reference": "8adb768402c24eac095e00d1120eda7bfc7303a7",
                 "shasum": ""
             },
             "require": {
@@ -502,7 +502,7 @@
                 "source": "https://github.com/LeadPoint-Digital/og-core/tree/v2",
                 "issues": "https://github.com/LeadPoint-Digital/og-core/issues"
             },
-            "time": "2024-04-04T11:52:44+00:00"
+            "time": "2024-04-04T18:19:15+00:00"
         },
         {
             "name": "php-di/invoker",

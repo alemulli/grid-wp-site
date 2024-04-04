@@ -11,12 +11,12 @@
 		{{ function('wp_head') }}
 		{% include "partials/fonts.twig" %}
 	</head>
-	<body  hx-ext="head-support" {{boost_links_if_not_admin()}} id="originsapp" class="{{body_class}}" data-template="base.twig">
+	<body  hx-ext="head-support" {{boost_links_if_not_admin()}} x-data="{navIsOpen: false}" :class="navIsOpen ? 'overflow-y-hidden' : '' " id="originsapp" class="{{body_class}}" data-template="base.twig">
 		{% include "partials/gtm-noscript.twig" %}
 		<a hx-post="/clicked" class=" skip-link screen-reader-text" href="#content">
 			{{ _e( 'Skip to content') }}
 		</a>
-		<header x-data="{navIsOpen: false}">
+		<header>
 			{% block header %}
 				{% include ('layouts/header.twig') %}
 			{% endblock %}
@@ -26,15 +26,12 @@
 				Sorry, no content
 			{% endblock %}
 		</main>
-		<footer class="text-white bg-black has-global-padding">
+		<footer>
 			{% block footer %}
 				{% include 'layouts/footer.twig' %}
 			{% endblock
             %}
 		</footer>
-		<pre>
-			{{ dump() }}
-		</pre>
 		{{ function('wp_footer') }}
 	</body>
 </html>

@@ -1,9 +1,8 @@
-{% import "components/header-navigation.twig" as menu %}
 
-<div class="relative flex items-center justify-between p-4 bg-black">
+<div class="relative flex items-end justify-between px-4 bg-black">
     {# Logo #}
     <a href="/" class="flex-shrink-0">
-        <div class="relative z-0 flex items-center">
+        <div class="relative z-0 flex items-center py-4">
             <img
                 src="{{theme.path}}/iconlg.png"
                 alt="Logo"
@@ -36,8 +35,10 @@
         </div>
         <menu
             :class="{'hidden' : ! navIsOpen}"
-            class="left-0 hidden w-full text-white bg-black lg:flex max-lg:pb-4 max-lg:flex-col max-lg:absolute has-global-padding lg:justify-end lg:items-center top-full lg:space-x-4">
-            {{ menu.render_menu_items(menus.header.items, 1) }}
+            class="left-0 hidden w-full text-white bg-black lg:px-16 lg:flex max-lg:pb-4 max-lg:flex-col max-lg:absolute has-global-padding lg:justify-end lg:items-center top-full lg:space-x-8">
+            {{ render('/components/header-navigation.twig', {
+    'items' : menus.header.items, li_classes: 'lg:py-4',
+}) }}
         </menu>
     </nav>
 </div>

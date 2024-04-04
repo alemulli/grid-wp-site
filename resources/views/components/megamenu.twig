@@ -1,0 +1,33 @@
+{# Sample of how you might handle a megamenu. Include this file in the header navigation when necessary #}
+<menu id="mega-menu" class="flex items-center justify-center h-full max-h-full pt-4 pb-8 text-black global-padding">
+    <div class="grid grid-cols-3 gap-[30px] w-full h-full">
+        {% for item in menu_items %}
+        <div>
+            {% set text_size_map = {0: '', 1: 'text-2xl', 2: 'text-xl', 3: 'text-lg', 4: 'text-md'} %}
+            {% set level_margin_map = {0: '', 1: 'mt-4', 2: 'ml-5', 3: 'ml-5', 4: 'ml-5'} %}
+                
+            {% if items %}
+                {% for item in items %}
+                    <li class="flex flex-col items-start justify-center list-none group {{ level_margin_map[item.level] }}">
+                        <div class="flex flex-row items-center gap-x-2 xl:gap-x-5">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 100 100" class="rotate-90 fill-black xl:hidden" aria-hidden="true">
+                                <polygon points="50, 13.397 100, 100 0, 100"/>
+                            </svg>
+                            <a href="{{ item.url }}" class="{{ item.class }} list-none leading-tight px-[5px] {{text_size_map[item.level]}}" title="{{ item.name }}" aria-label="{{ item.name }}">{{ item.name }}</a>
+                        </div>
+                        {% if item.children %}
+                            <menu x-cloak class="flex flex-col items-start justify-start w-full gap-4 lg:w-fit">
+                                {% for item in items %}
+                                    <li class="flex flex-col items-start justify-center list-none group {{ level_margin_map[item.level] }}">
+                                        <a href="{{ item.url }}" class="{{ item.class }} list-none leading-tight px-[5px] {{text_size_map[item.level]}}" title="{{ item.name }}" aria-label="{{ item.name }}">{{ item.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </menu>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</menu>

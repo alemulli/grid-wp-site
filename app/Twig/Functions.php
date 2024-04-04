@@ -3,6 +3,7 @@
 namespace Origins\Twig;
 
 use Og\Twig\TwigExtension;
+use Timber\Timber;
 
 class Functions extends TwigExtension
 {
@@ -11,6 +12,7 @@ class Functions extends TwigExtension
         // $this->add('func_name', [$this, 'func']);
         $this->add('ajax', [$this, 'ajax']);
         $this->add('boost_links_if_not_admin', [$this, 'boost_links_if_not_admin']);
+        $this->add('render', [$this, 'render']);
     }
 
     public function ajax($action, $data = [])
@@ -34,5 +36,10 @@ class Functions extends TwigExtension
         if (!is_user_logged_in()) {
             echo 'hx-boost="true" hx-indicator="body" hx-swap="outerHTML transition:true"';
         }
+    }
+
+    public function render($template, $data)
+    {
+        return Timber::compile($template, $data);
     }
 }
